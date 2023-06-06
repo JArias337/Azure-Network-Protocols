@@ -1,6 +1,6 @@
 # Azure Network Protocols
 <p align="center">
-<img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
+<img src="https://i.imgur.com/Ua7udoS.png" height="50%" width="50%" alt="Traffic Examination"/>
 </p>
 
 <h1>Network Security Groups (NSGs) and Observing Traffic Between Azure Virtual Machines</h1>
