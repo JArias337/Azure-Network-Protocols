@@ -53,43 +53,46 @@ Do a search for "Wireshark" in your Windows search bar and the program should op
 <img src="https://i.imgur.com/3r4Acnn.png" />
 </p>
 
-<h3>Step 3: Running different network protocols and observing its traffic by using Wireshark</h3>
+<h3>Step 3: Running a variety of network protocols and using Wireshark to observe its traffic</h3>
 
-<h2 align="center">Utilizing ICMP protocol</h2>
-
-
-We can observe connectivity between our two virtual machines by pinging our Ubuntu VM from our Windows 10 VM. To do this we first need to filter our network traffic by typing in ICMP at the top bar (ICMP is the protocol used by ping) and you'll notice that there isn't any traffic displayed in Wireshark.
+<h2 align="center">Implementing ICMP protocol</h2>
 
 
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b13.png" height="70%" width="85%"/>
-</p>
-
-In order to ping to our Ubuntu VM we need to retrieve its private IP address which can be found in our Azure account and clicking on our Ubuntu VM in Virtual machines. After copying the private IP address, go back to your Windows VM, open Powershell from the Windows search bar and type in "ping (private IP address)" and press Enter. 
+You are able to view connectivity between your two virtual machines by pinging the Ubuntu VM from your Windows 10 VM. First, you will need to filter your network traffic by typing in ICMP at the top (ICMP: protocol used by ping) and you will observe that there is no traffic.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b14.png" />
+<img src="https://imgpile.com/images/9mfJt1.png"/>
 </p>
 
-You'll notice that Wireshark will display traffic between two IP addresses under Source and Destination column, here 10.0.0.4 is the Windows VM and 10.0.0.5 is the Ubuntu VM thus proving connectivity between the VMs. 
+You will need to retrieve your Ubuntu VM's private IP address so you can ping it, which can be found in your Azure account by accessing your Ubuntu VM in Virtual machines. After you copy the private IP address, go back to your Windows VM and type in Powershell from the Windows search bar. Once you open the program, type in "ping (Ubuntu private IP address)" and press enter. 
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b15.png" />
+<img src="https://imgpile.com/images/9mfPHL.png" />
 </p>
 
-We can also see connectivity between the Windows VM and a website for instance. To test this go into Powershell, type in ping and the website you would like to test connectivity to and hit Enter. Here you can see that 10.0.0.4 is the Windows VM and 172.253.115.136 is YouTube proving connectivity.
+You will observe that there is traffic between two IP addresses under Source and Destination column. 10.0.0.4 is the Windows VM and 10.0.0.5 is the Ubuntu VM, showing that there is connectivity between the VMs. 
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b16.png" />
+<img src="https://imgpile.com/images/9mfYSx.png" />
 </p>
 
-We can set the Windows VM to ping to Ubuntu VM perpetually by typing in "ping (private IP address) -t" and hitting Enter; notice Wireshark is constantly displaying network traffic between the virtual machines nonstop. 
+You can also observe connectivity between the Windows VM and a website of your choice. Go into Powershell, type in ping and the website you would like to test and hit Enter. In our example below, you can see that 10.0.0.4 is the Windows VM and 23.204.249.185 is amazon.com, showing that we have a connection.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b17.png" />
+<img src="https://imgpile.com/images/9mfsbj.png" />
 </p>
 
-<h2 align="center">Utilizing Network Security Groups</h2>
+You can also have your Windows VM ping your Ubuntu VM indefinitely by typing "ping (Ubuntu private IP address) -t" and hitting Enter. You will obvserve that Wireshark is showing network traffic between the virtual machines with no end. 
+
+<p align="center">
+<img src="https://imgpile.com/images/9mfrY8.png" />
+ </p>
+
+<p align="center">
+<img src="https://imgpile.com/images/9mffgC.png" />
+</p>
+
+<h2 align="center">Implementing Network Security Groups</h2>
 
 While the Windows VM is pinging our Ubuntu VM, we can alter the Firewall rules of the Ubuntu VM to prevent ICMP traffic coming through thus preventing connectivity between the two VMs. Basically we are going to create a new firewall rule that will deny any incoming ICMP traffic. To do this, go into Azure, type in "Network Security Group" in the search bar (which is essentially the virtual machine's Firewall), select the Ubuntu VM network security group, click on "Inbound security rules" and click "+ Add." 
 
