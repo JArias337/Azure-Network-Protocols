@@ -15,7 +15,7 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 - Remote Desktop
 - Wireshark 
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Various Network Protocols (ICMP, SSH, RDP, DHCP, DNS)
 
 <h2>Operating Systems Used </h2>
 
