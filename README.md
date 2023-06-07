@@ -122,53 +122,49 @@ To enable connectivity again between the two VMs, go to your Inbound security ru
 
 <h2 align="center">Implementing SSH protocol</h2>
 
-We can access Ubuntu VM from the Windows VM by the Powershell command line using SSH. In Wireshark, filter the traffic by typing in "ssh" in the top bar and clicking on the green fin icon to refresh. Then in Powershell, type  in "ssh (Ubuntu VM username)@(private IP address)" and hit Enter.
+You can access your Ubuntu VM from the Windows VM by the Powershell command line using SSH. Filter the traffic in Wireshark by typing in "ssh" in the top bar and clicking on the green icon so you can refresh. Next go to Powershell, type  in "ssh (your Ubuntu VM username)@(private IP address)" and hit Enter.
+
+You will receive a message asking if you want to continue, which you will type "yes." Next, enter the password that you created for your Ubuntu VM under "Administrator account" and when you type in your password. When you type in your password, you will see that there's no visible text appearing, but that is ok. Just type in your password and rest assured that it will go through if you enter it correctly.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b23.png" />
+<img src="https://imgpile.com/images/9mQ7yl.png" />
 </p>
 
-You will receive a prompt if you want to continue so type "yes." Then you will need to enter the password that you made for your Ubuntu VM under "Administrator account" and when you type in your password you'll notice that there's no visible text appearing, there is nothing wrong with Powershell you just need to type it in correctly. Hit Enter after you've typed your password, you successfully logged in Ubuntu's VM marked by green text virtual machine name.
+You can see the directories (folders) of your Ubuntu VM by typing in "ls -lasth" and pressing Enter. You will notice the traffic displayed in Wireshark. You can exit out of your Ubuntu VM by typing in "exit" and pressing Enter.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b24.png" />
-</p>
-
-You can list the directories (folders) of Ubuntu VM by typing in "ls -lasth" and press Enter and as you do you will notice the traffic displayed in Wireshark. You can exit out of Ubuntu VM by typing in "exit" and pressing Enter.
-
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b25.png" />
+<img src="https://imgpile.com/images/9mQwXF.png" />
 </p>
 
 
 <h2 align="center">Implementing RDP protocol</h2>
 
-We can observe RDP (Remote Desktop Protocol) traffic by its protocol and port number in Wireshark. We can do this by filtering RDP traffic by typing in "tcp.port == 3389" in the top bar and seeing a continuous display of traffic.
+You can view RDP (Remote Desktop Protocol) traffic by its protocol/port number. You can do this by filtering RDP traffic by typing in "tcp.port == 3389" in the bar, which will allow you to see as constant display of traffic.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b28.png" />
+<img src="https://imgpile.com/images/9mQTbu.png" />
 </p>
 
 <h2 align="center">Implementing DHCP protocol</h2>
 
-We can observe DHCP traffic in Wireshark by re-issuing the IP address of our Windows VM via the ipconfig /renew command in Powershell. First filter DHCP traffic by typing "dhcp" in the top bar and refresh. Then type in "ipconfig /renew" in the Powershell and observe the traffic in Wireshark. 
+You can view DHCP traffic by re-issuing the IP address of our Windows VM in Powershell. Filter DHCP traffic by typing "dhcp" in the bar and hit the green icon to refresh. Next type "ipconfig /renew" in Powershell and view the traffic in Wireshark. 
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b26.png" />
+<img src="https://imgpile.com/images/9mQCP2.png" />
 </p>
 
 
 <h2 align="center">Implementing DNS protocol</h2>
 
 
-We can also observe DNS traffic by the nslookup command in Powershell, this command gives us the IP address of a website. Filter traffic by DNS in Wireshark then type in "nslookup (your choice of website)" into Powershell and observe the network traffic in Wireshark. 
+You can also view DNS traffic by the nslookup command in Powershell. Nslookup gives us the IP address of a website. You can filter traffic by DNS in Wireshark then type in "nslookup (your choice of website)" into Powershell and observe the network traffic in Wireshark. 
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b27.png" />
+<img src="https://imgpile.com/images/9mQxGX.png" />
 </p>
 
-We're almost finished, all we have to do now is to delete our resource groups in Azure so that it won't charge us more for using its services unnecessarily. So go into Azure, type in "Resource groups", click on the Resource group(s) shown, select "Delete resource group", copy the resource group's name and paste it below and then hit "Delete." Do this for each resource group and that's it for this tutorial.
+Once you are done using your virtual machine, you will need to delete the resource group so you are not being charged when you are not using it. In order to do this, type "Resource groups", click on the Resource group that you would like to delete, select "Delete resource group", copy and paste the name of the resource group below and then hit "Delete." 
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b29.png" />
+<img src="https://imgpile.com/images/9mQKHh.png" />
 </p>
