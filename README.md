@@ -97,34 +97,30 @@ You can also have your Windows VM ping your Ubuntu VM indefinitely by typing "pi
 
 <h2 align="center">Implementing Network Security Groups</h2>
 
-While the Windows VM is pinging our Ubuntu VM, we can alter the Firewall rules of the Ubuntu VM to prevent ICMP traffic coming through thus preventing connectivity between the two VMs. Basically we are going to create a new firewall rule that will deny any incoming ICMP traffic. To do this, go into Azure, type in "Network Security Group" in the search bar (which is essentially the virtual machine's Firewall), select the Ubuntu VM network security group, click on "Inbound security rules" and click "+ Add." 
+As your Windows VM is pinging your Ubuntu VM, you can modify the Firewall rules of the Ubuntu VM to stop ICMP traffic, which will end this connection between the two VMs. In order to do this, you will create a new firewall rule that will prevent any incoming ICMP traffic. Go into Azure, type "Network Security Group" in the search bar (which functions as your virtual machine's Firewall), select the Ubuntu VM network security group, click on "Inbound security rules" and click "+ Add." 
+
+Next, select "ICMP" under Protocol and "Deny" under Action. Adjust the Priority value above SSH's 300 so that the rule we made will be the first rule in place. In your case, you can select 200 as the rule's Priority value and then click Add.
+Once this rule is in place, you will notice there is no connection between the virtual machines.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b18.png" />
-</p>
-
-Here select "ICMP" under Protocol and "Deny" under Action. Change the Priority value above SSH's 300 so that the rule we made will be the first rule enact, here I've chosen 200 as the rule's Priority value and then click Add.
-And once you're done adding this rule, notice the network traffic in Wireshark and Powershell, it basically shows that the Windows VM is pinging the Ubuntu VM yet there is no connection between them.
-
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b19.png" />
+<img src="https://imgpile.com/images/9mBg2w.png" />
 </p>
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b20.png" />
+<img src="https://imgpile.com/images/9mF5cc.png" />
 </p>
 
-To allow connectivity again between the two VMs, just go back to the Inbound security rule, select "Allow" and "Save" and you should notice correspondence between the virtual machines again. Hit Ctrl + C in Powershell to stop pinging.
+To enable connectivity again between the two VMs, go to your Inbound security rule, select "Allow" and "Save" and you will observe that the virtual machines are connecting again. You can hit Ctrl + C in Powershell to stop the pinging.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b21.png" />
+<img src="https://imgpile.com/images/9mFdMP.png" />
 </p>
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b22.png" />
+<img src="https://imgpile.com/images/9mFDCx.png" />
 </p>
 
-<h2 align="center">Utilizing SSH protocol</h2>
+<h2 align="center">Implementing SSH protocol</h2>
 
 We can access Ubuntu VM from the Windows VM by the Powershell command line using SSH. In Wireshark, filter the traffic by typing in "ssh" in the top bar and clicking on the green fin icon to refresh. Then in Powershell, type  in "ssh (Ubuntu VM username)@(private IP address)" and hit Enter.
 
@@ -145,7 +141,7 @@ You can list the directories (folders) of Ubuntu VM by typing in "ls -lasth" and
 </p>
 
 
-<h2 align="center">Utilizing RDP protocol</h2>
+<h2 align="center">Implementing RDP protocol</h2>
 
 We can observe RDP (Remote Desktop Protocol) traffic by its protocol and port number in Wireshark. We can do this by filtering RDP traffic by typing in "tcp.port == 3389" in the top bar and seeing a continuous display of traffic.
 
@@ -153,7 +149,7 @@ We can observe RDP (Remote Desktop Protocol) traffic by its protocol and port nu
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/b28.png" />
 </p>
 
-<h2 align="center">Utilizing DHCP protocol</h2>
+<h2 align="center">Implementing DHCP protocol</h2>
 
 We can observe DHCP traffic in Wireshark by re-issuing the IP address of our Windows VM via the ipconfig /renew command in Powershell. First filter DHCP traffic by typing "dhcp" in the top bar and refresh. Then type in "ipconfig /renew" in the Powershell and observe the traffic in Wireshark. 
 
@@ -162,7 +158,7 @@ We can observe DHCP traffic in Wireshark by re-issuing the IP address of our Win
 </p>
 
 
-<h2 align="center">Utilizing DNS protocol</h2>
+<h2 align="center">Implementing DNS protocol</h2>
 
 
 We can also observe DNS traffic by the nslookup command in Powershell, this command gives us the IP address of a website. Filter traffic by DNS in Wireshark then type in "nslookup (your choice of website)" into Powershell and observe the network traffic in Wireshark. 
